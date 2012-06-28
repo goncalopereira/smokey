@@ -1,0 +1,8 @@
+C:\work\Smokey\AllTests\bin\Debug\AllTests.dll
+C:\work\Smokey\AllTests\bin\Debug\AllTests.pdb
+C:\work\Smokey\AllTests\bin\Debug\nunit.framework.dll
+C:\work\Smokey\AllTests\bin\Debug\RestSharp.dll
+C:\work\Smokey\AllTests\bin\Debug\nunit.framework.xml
+C:\work\Smokey\AllTests\bin\Debug\RestSharp.xml
+C:\work\Smokey\AllTests\obj\Debug\AllTests.dll
+C:\work\Smokey\AllTests\obj\Debug\AllTests.pdb
