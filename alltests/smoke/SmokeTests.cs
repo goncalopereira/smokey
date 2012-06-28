@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using RestSharp;
 
-namespace alltests
+namespace alltests.smoke
 { 
     [TestFixture]
     public class SmokeTests
