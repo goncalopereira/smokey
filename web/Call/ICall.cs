@@ -4,5 +4,6 @@ namespace web.Call
     {
         CallResponse Execute();
         string Url { get; }
+        string Name { get; }
     }
 }
