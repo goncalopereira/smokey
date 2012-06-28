@@ -30,7 +30,7 @@ namespace web.Call
                 }
                 else
                 {
-                    results.Add(new CallResponse() {Status = CallResponse.CallStatus.NotExecuted});
+                    results.Add(new CallResponse(myCall.Url) {Status = CallResponse.CallStatus.NotExecuted});
                 }               
             }
 

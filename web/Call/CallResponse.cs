@@ -2,6 +2,11 @@ namespace web.Call
 {
     public class CallResponse
     {
+        public CallResponse(string url)
+        {
+            Url = url;
+        }
+   
         public enum CallStatus
         {
             OK,
@@ -10,5 +15,7 @@ namespace web.Call
         };
 
         public CallStatus Status { get; set; }
+
+        public string Url { get; private set; }
     }
 }
