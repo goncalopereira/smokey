@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Rhino.Mocks;
 using web;
+using web.Call;
 
 namespace alltests.unit
 {
@@ -37,8 +38,23 @@ namespace alltests.unit
 
             setup.Execute();
 
-            call1.AssertWasCalled(x => x.Execute());
+            call1.AssertWasCalled(x => x.Execute());          
             call2.AssertWasNotCalled(x => x.Execute());
+        }
+
+        [Test]
+        public void When_one_call_fails_number_of_response_is_still_the_same_as_total()
+        {
+            ICall call1 = MockRepository.GenerateMock<ICall>();
+            call1.Stub(x => x.Execute()).Return(new CallResponse() { Status = CallResponse.CallStatus.Failed });
+            ICall call2 = MockRepository.GenerateMock<ICall>();
+            var calls = new List<ICall> { call1, call2 };
+
+            ISetup setup = new Setup(calls);
+
+            IList<CallResponse> results = setup.Execute();
+            Assert.That(results[0].Status,Is.EqualTo(CallResponse.CallStatus.Failed));
+            Assert.That(results[1].Status, Is.EqualTo(CallResponse.CallStatus.NotExecuted));
         }
     }
 }

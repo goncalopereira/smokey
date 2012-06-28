@@ -1,10 +1,12 @@
-namespace web
+using web.Call;
+
+namespace web.Resource
 {
-    public class Smoke : ISmoke
+    public class Resource : IResource
     {
         private ISetup MySetup { get; set; }
 
-        public Smoke(ISetup setup)
+        public Resource(ISetup setup)
         {
             MySetup = setup;
         }

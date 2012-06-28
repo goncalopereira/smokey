@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using Rhino.Mocks;
 using web;
+using web.Call;
+using web.Resource;
 
 namespace alltests.unit
 {
@@ -12,8 +14,8 @@ namespace alltests.unit
         {
             ISetup setup = MockRepository.GenerateMock<ISetup>();
 
-            Smoke smoke = new Smoke(setup);
-            smoke.Execute();
+            Resource resource = new Resource(setup);
+            resource.Execute();
 
             setup.AssertWasCalled(x=>x.Execute());
         }

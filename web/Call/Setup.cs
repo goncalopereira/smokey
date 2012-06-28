@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace web
+namespace web.Call
 {
     public class Setup : ISetup
     {
@@ -11,7 +11,7 @@ namespace web
             _calls = calls;
         }
 
-        public IEnumerable<CallResponse> Execute()
+        public IList<CallResponse> Execute()
         {
             bool stillRunning = true;
             List<CallResponse> results = new List<CallResponse>();

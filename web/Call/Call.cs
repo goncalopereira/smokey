@@ -1,4 +1,4 @@
-namespace web
+namespace web.Call
 {
     public class Call : ICall
     {

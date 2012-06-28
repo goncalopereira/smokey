@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-namespace web
+namespace web.Call
 {
     public interface ISetup
     {
-        IEnumerable<CallResponse> Execute();
+        IList<CallResponse> Execute();
     }
 }

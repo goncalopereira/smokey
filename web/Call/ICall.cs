@@ -1,4 +1,4 @@
-namespace web
+namespace web.Call
 {
     public interface ICall
     {
