@@ -58,8 +58,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Call.cs" />
+    <Compile Include="CallResponse.cs" />
+    <Compile Include="ICall.cs" />
+    <Compile Include="ISetup.cs" />
+    <Compile Include="ISmoke.cs" />
+    <Compile Include="ISmokeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
     <Compile Include="Smoke.cs" />
+    <Compile Include="SmokeRepository.cs" />
+    <Compile Include="WebSmoke.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
