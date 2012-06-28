@@ -3,3 +3,8 @@ Why rewrite the whell for smoke tests or leave stuff untested?
 Automates a setup and call for Smoke Test by checking a chain of calls and replying with info about how the test ran.
 
 Has config and API to build up monitoring pages.
+
+NancyFx for API
+RestSharp for calls
+NUnit and RhinoMocks for testing
+NuGet to put it together
