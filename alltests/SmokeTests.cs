@@ -1,9 +1,8 @@
 ﻿using System.Net;
 using NUnit.Framework;
 using RestSharp;
-using RestSharp.Authenticators;
 
-namespace AllTests
+namespace alltests
 { 
     [TestFixture]
     public class SmokeTests
