@@ -5,7 +5,7 @@ using RestSharp;
 namespace alltests.smoke
 { 
     [TestFixture]
-    public class WebSmokeTests
+    public class SmokeTests
     {
         private const string Hostname = "http://smokey";
 

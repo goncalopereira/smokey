@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using Rhino.Mocks;
-using web;
-using web.Call;
 using web.Resource;
+using web.Web;
 
 namespace alltests.unit
 {
@@ -10,14 +9,16 @@ namespace alltests.unit
     public class SmokeTests
     {
         [Test]
-        public void When_executing_run()
+        public void When_running_a_smoke_execute_it()
         {
-            ISetup setup = MockRepository.GenerateMock<ISetup>();
+            IResourceRepository resourceRepository = MockRepository.GenerateMock<IResourceRepository>();
+            var resource = MockRepository.GenerateMock<IResource>();
+            resourceRepository.Stub(x => x.Get(Arg<string>.Is.Anything)).Return(resource);
 
-            Resource resource = new Resource(setup);
-            resource.Execute();
+            var smoke = new Smoke(resourceRepository);
 
-            setup.AssertWasCalled(x=>x.Execute());
+            resourceRepository.AssertWasCalled(x => x.Get(Arg<string>.Is.Anything));
+            resource.AssertWasCalled(x=>x.Execute());
         }
     }
 }

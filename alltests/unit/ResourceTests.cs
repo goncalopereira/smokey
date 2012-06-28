@@ -7,7 +7,7 @@ using web.Resource;
 namespace alltests.unit
 {
     [TestFixture]
-    public class SmokeTests
+    public class ResourceTests
     {
         [Test]
         public void When_executing_run()
