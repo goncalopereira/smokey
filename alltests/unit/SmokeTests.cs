@@ -24,11 +24,32 @@ namespace alltests.unit
             Nancy.Bootstrapper.INancyBootstrapper bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
             var browser = new Browser(bootstrapper);
 
-            browser.Get(string.Format("/smoke/{0}", id), with => with.HttpRequest());
+            browser.Get(string.Format("/smoke/{0}/execute", id), with => with.HttpRequest());
 
             resourceRepository.AssertWasCalled(x => x.Get(id));
             resourceRepository.AssertWasNotCalled(x => x.GetAll());
             resource.AssertWasCalled(x => x.Execute());
+        }
+
+        [Test]
+        public void When_showing_a_smoke_dont_execute_it()
+        {
+            const string id = "id";
+
+            IResourceRepository resourceRepository = MockRepository.GenerateMock<IResourceRepository>();
+            var resource = MockRepository.GenerateMock<IResource>();
+            IList<CallResponse> results = new List<CallResponse>();
+            resource.Stub(x => x.Execute()).Return(results);
+            resourceRepository.Stub(x => x.Get(id)).Return(resource);
+
+            Nancy.Bootstrapper.INancyBootstrapper bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
+            var browser = new Browser(bootstrapper);
+
+            browser.Get(string.Format("/smoke/{0}", id), with => with.HttpRequest());
+
+            resourceRepository.AssertWasCalled(x => x.Get(id));
+            resourceRepository.AssertWasNotCalled(x => x.GetAll());
+            resource.AssertWasNotCalled(x => x.Execute());
         }
 
         [Test]

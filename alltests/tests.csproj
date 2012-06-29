@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="smoke\SmokeTests.cs" />
     <Compile Include="unit\SetupTests.cs" />
     <Compile Include="unit\ResourceTests.cs" />
     <Compile Include="unit\SmokeTests.cs" />

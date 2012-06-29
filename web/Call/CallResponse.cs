@@ -4,7 +4,6 @@ namespace web.Call
 {
     public class CallResponse
     {
-
         public CallResponse(string url, string name)
         {
             Name = name;
