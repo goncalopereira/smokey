@@ -46,7 +46,7 @@ namespace alltests.unit
         {
             ICall call1 = MockRepository.GenerateMock<ICall>();
             call1.Stub(x => x.Execute()).Return(new CallResponse(string.Empty,string.Empty) { Status = CallResponse.CallStatus.Failed });
-            ICall call2 = new Call() {Name = "url2", Url = "url2"};
+            ICall call2 = new Call(null) {Name = "url2", Url = "url2"};
             var calls = new List<ICall> { call1, call2 };
 
             ISetup setup = new Setup(calls);
@@ -63,7 +63,7 @@ namespace alltests.unit
             call1.Stub(x => x.Name).Return("name");
             call1.Stub(x => x.Url).Return("url");
             call1.Stub(x => x.Execute()).Return(new CallResponse(call1.Url,call1.Name) { Status = CallResponse.CallStatus.Failed });
-            ICall call2 = new Call() { Name = "url2", Url = "url2" };
+            ICall call2 = new Call(null) { Name = "url2", Url = "url2" };
             var calls = new List<ICall> { call1, call2 };
 
             ISetup setup = new Setup(calls);

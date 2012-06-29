@@ -6,13 +6,33 @@ namespace web.Call
 {
     public class Call : ICall
     {
+        private readonly IRestClient _client;
+
+        public Call(IRestClient client)
+        {
+            _client = client;
+        }
+
+        public Call()
+        {
+            _client = new RestClient();
+        }
+
         public CallResponse Execute()
         {
+            Uri uri;
             try
             {
-                var uri = new Uri(Url);
-                var client = new RestClient(uri.Host);
-                IRestResponse response = client.Execute(new RestRequest(uri, Method));
+                uri = new Uri(Url);
+            }
+            catch(Exception e)
+            {
+                return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed };
+            }
+
+            try
+            {
+                IRestResponse response = _client.Execute(new RestRequest(uri, Method));
             }
             catch (Exception e)
             {
