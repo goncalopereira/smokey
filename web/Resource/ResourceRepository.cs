@@ -7,7 +7,9 @@ namespace web.Resource
     {
         public IResource Get(string id)
         {
-            return new Resource(new Setup(new List<ICall>()));
+            List<ICall> calls = new List<ICall> {new Call.Call("url1","call1"), new Call.Call("url2","call2")};
+
+            return new Resource(new Setup(calls));
         }
     }
 }

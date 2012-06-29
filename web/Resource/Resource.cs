@@ -1,19 +1,20 @@
+using System.Collections.Generic;
 using web.Call;
 
 namespace web.Resource
 {
     public class Resource : IResource
     {
-        private ISetup MySetup { get; set; }
+        public ISetup Calls { get; private set; }
 
         public Resource(ISetup setup)
         {
-            MySetup = setup;
+            Calls = setup;
         }
 
-        public void Execute()
+        public IList<CallResponse> Execute()
         {
-            MySetup.Execute();
+            return Calls.Execute();
         }
     }
 }

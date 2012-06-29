@@ -1,3 +1,4 @@
 /alltests/bin/*
 /alltests/obj/*
 /web/obj/*
+/web/bin/*

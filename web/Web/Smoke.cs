@@ -1,4 +1,7 @@
-﻿using Nancy;
+﻿using System.Collections.Generic;
+using Nancy;
+using Nancy.Responses;
+using web.Call;
 using web.Resource;
 
 namespace web.Web
@@ -7,12 +10,12 @@ namespace web.Web
     {
         public Smoke(IResourceRepository repository)
             : base("/smoke")
-        {
-            Get["/"] = parameters => "Hello World";
-            Get["/"] = status => HttpStatusCode.OK;
-
+        {            
             IResource resource = repository.Get("id");
-            resource.Execute();
+
+            IList<CallResponse> callResponses = resource.Execute();
+            Get["/{id}"] = x => new JsonResponse<IList<CallResponse>>(callResponses,new DefaultJsonSerializer()); ;
         }
+
     }
 }

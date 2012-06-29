@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+using web.Call;
+
 namespace web.Resource
 {
     public interface IResource
     {
-        void Execute();
+        IList<CallResponse> Execute();
     }
 }
