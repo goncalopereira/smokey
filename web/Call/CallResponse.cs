@@ -1,3 +1,5 @@
+using Nancy.Json;
+
 namespace web.Call
 {
     public class CallResponse
@@ -16,9 +18,15 @@ namespace web.Call
             NotExecuted
         };
 
+        [ScriptIgnore]
         public CallStatus Status { get; set; }
-
+        
         public string Url { get; private set; }
         public string Name { get; private set; }
+        public string State
+        {
+            get { return Status.ToString(); }
+          
+        }
     }
 }

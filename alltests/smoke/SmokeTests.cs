@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Authenticators;
 using web.Call;
 
 namespace alltests.smoke

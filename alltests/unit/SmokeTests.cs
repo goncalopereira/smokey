@@ -21,7 +21,7 @@ namespace alltests.unit
             resource.Stub(x => x.Execute()).Return(results);
             resourceRepository.Stub(x => x.Get(id)).Return(resource);
 
-            var bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
+            Nancy.Bootstrapper.INancyBootstrapper bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
             var browser = new Browser(bootstrapper);
 
             browser.Get(string.Format("/smoke/{0}", id), with => with.HttpRequest());
@@ -41,7 +41,7 @@ namespace alltests.unit
             resource.Stub(x => x.Execute()).Return(results);
             resourceRepository.Stub(x => x.GetAll()).Return(new List<IResource>() {resource, resource});
 
-            var bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
+            Nancy.Bootstrapper.INancyBootstrapper bootstrapper = new ConfigurableBootstrapper(with => with.Dependency(resourceRepository));
             var browser = new Browser(bootstrapper);
 
             browser.Get(string.Format("/smoke/"), with => with.HttpRequest());

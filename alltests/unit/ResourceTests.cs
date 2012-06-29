@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Rhino.Mocks;
-using web;
 using web.Call;
 using web.Resource;
 
@@ -12,12 +12,24 @@ namespace alltests.unit
         [Test]
         public void When_executing_run()
         {
-            ISetup setup = MockRepository.GenerateMock<ISetup>();
+            List<ICall> calls = new List<ICall>();
+            var call1 = MockRepository.GenerateMock<ICall>();
+            call1.Stub(x => x.Execute()).Return(new CallResponse(string.Empty, string.Empty)
+                                                    {Status = CallResponse.CallStatus.OK});
+            var call2 = MockRepository.GenerateMock<ICall>();
+            call2.Stub(x => x.Execute()).Return(new CallResponse(string.Empty, string.Empty)
+                                                    {Status = CallResponse.CallStatus.OK});
+            calls.Add(call1);
+            calls.Add(call2);
 
-            Resource resource = new Resource(setup);
+            Resource resource = new Resource(calls, string.Empty);
             resource.Execute();
 
-            setup.AssertWasCalled(x=>x.Execute());
+            foreach (var call in calls)
+            {
+                call.AssertWasCalled(x=>x.Execute());
+            }
         }
+  
     }
 }

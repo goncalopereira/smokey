@@ -5,16 +5,40 @@ namespace web.Resource
 {
     public class Resource : IResource
     {
-        public ISetup Calls { get; private set; }
+       
+        public List<ICall> Calls { get; private set; }
 
-        public Resource(ISetup setup)
+        public string Name { get; private set; }
+        public Resource(List<ICall> calls, string name)
         {
-            Calls = setup;
+            Calls = calls;
+            Name = name;
         }
 
         public IList<CallResponse> Execute()
         {
-            return Calls.Execute();
+            bool stillRunning = true;
+            List<CallResponse> results = new List<CallResponse>();
+
+            foreach (var myCall in Calls)
+            {
+                if (stillRunning)
+                {
+                    var result = myCall.Execute();
+                    results.Add(result);
+
+                    if (result.Status == CallResponse.CallStatus.Failed)
+                    {
+                        stillRunning = false;
+                    }
+                }
+                else
+                {
+                    results.Add(new CallResponse(myCall.Url, myCall.Name) { Status = CallResponse.CallStatus.NotExecuted });
+                }
+            }
+
+            return results;
         }
     }
 }
