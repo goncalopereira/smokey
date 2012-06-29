@@ -34,7 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Nancy, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\Nancy.Testing.0.11.0\lib\net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPlus">
+      <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\Nancy.Testing.0.11.0\lib\net40\HtmlAgilityPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\Nancy.0.11.0\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Testing">
+      <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\Nancy.Testing.0.11.0\lib\net40\Nancy.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -53,6 +64,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\..\..\Users\goncalo\Documents\Visual Studio 2010\Projects\Smokey\packages\xunit.1.7.0.1540\lib\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
