@@ -1,4 +1,5 @@
 using System;
+using Nancy.Json;
 using RestSharp;
 
 namespace web.Call
@@ -23,6 +24,13 @@ namespace web.Call
 
         public string Url { get; set; }
         public string Name { get; set; }
+
+        [ScriptIgnore]
         public Method Method { get; set; }
+
+        public string HTTPMethod
+        {
+            get { return Method.ToString(); }
+        }
     }
 }
