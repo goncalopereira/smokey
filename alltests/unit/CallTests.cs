@@ -4,6 +4,7 @@ using NUnit.Framework;
 using RestSharp;
 using Rhino.Mocks;
 using web.Call;
+using web.CallResponse;
 
 namespace alltests.unit
 {
@@ -15,7 +16,7 @@ namespace alltests.unit
         {
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Throw(new Exception());
-            Call call = new Call(client) { Url = "http://google.com" };
+            Call call = new Call(client) { Url = "http://google.com"};
 
             var response = call.Execute();
 
@@ -28,7 +29,9 @@ namespace alltests.unit
         {
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse());
-            Call call = new Call(client){Url = "http://google.com"};
+            ICallResponseValidation validation = MockRepository.GenerateMock<ICallResponseValidation>();
+            validation.Stub(x => x.Execute(Arg<IRestResponse>.Is.Anything)).Return(false);
+            Call call = new Call(client) { Url = "http://google.com", Validation = validation};
 
             var response = call.Execute();
 
@@ -41,7 +44,9 @@ namespace alltests.unit
         {
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { StatusCode = HttpStatusCode.OK} );
-            Call call = new Call(client){Url = "http://google.com"};
+            ICallResponseValidation validation = MockRepository.GenerateMock<ICallResponseValidation>();
+            validation.Stub(x => x.Execute(Arg<IRestResponse>.Is.Anything)).Return(true);
+            Call call = new Call(client) { Url = "http://google.com", Validation = validation };
 
             var response = call.Execute();
 
@@ -56,8 +61,11 @@ namespace alltests.unit
             const string errormessage = "errorMessage";
 
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
-            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { ErrorMessage = errormessage});
-            Call call = new Call(client) { Url = "http://google.com" };
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse());
+            ICallResponseValidation validation = MockRepository.GenerateMock<ICallResponseValidation>();
+            validation.Stub(x => x.Execute(Arg<IRestResponse>.Is.Anything)).Return(false);
+            validation.Stub(x => x.Message).Return(errormessage);
+            Call call = new Call(client) {Url = "http://google.com", Validation = validation};
 
             var response = call.Execute();
 
@@ -69,8 +77,9 @@ namespace alltests.unit
         {
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { StatusCode = HttpStatusCode.OK });
-            Call call = new Call(client) { Url = "http://google.com" };
-
+            ICallResponseValidation validation = MockRepository.GenerateMock<ICallResponseValidation>();
+            validation.Stub(x => x.Execute(Arg<IRestResponse>.Is.Anything)).Return(false);
+            Call call = new Call(client) { Url = "http://google.com", Validation = validation};
            var response = call.Execute();
 
             Assert.That(response.Message, Is.Null);
@@ -83,7 +92,7 @@ namespace alltests.unit
 
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Throw(new Exception(errorMessage));
-            Call call = new Call(client) { Url = "http://google.com" };
+            Call call = new Call(client) { Url = "http://google.com", Validation = new HttpStatusCodeIsOK() };
 
             var response = call.Execute();
 

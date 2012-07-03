@@ -24,10 +24,10 @@ namespace web.Resource
             Name = name;
         }
 
-        public IList<CallResponse> Execute()
+        public IList<CallResponse.CallResponse> Execute()
         {
             bool stillRunning = true;
-            List<CallResponse> results = new List<CallResponse>();
+            var results = new List<CallResponse.CallResponse>();
 
             foreach (var myCall in Calls)
             {
@@ -36,14 +36,14 @@ namespace web.Resource
                     var result = myCall.Execute();
                     results.Add(result);
 
-                    if (result.Status == CallResponse.CallStatus.Failed)
+                    if (result.Status == CallResponse.CallResponse.CallStatus.Failed)
                     {
                         stillRunning = false;
                     }
                 }
                 else
                 {
-                    results.Add(new CallResponse(myCall.Url, myCall.Name) { Status = CallResponse.CallStatus.NotExecuted });
+                    results.Add(new CallResponse.CallResponse(myCall.Url, myCall.Name) { Status = CallResponse.CallResponse.CallStatus.NotExecuted });
                 }
             }
 

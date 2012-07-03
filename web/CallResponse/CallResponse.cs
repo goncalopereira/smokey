@@ -1,6 +1,6 @@
 using Nancy.Json;
 
-namespace web.Call
+namespace web.CallResponse
 {
     public class CallResponse
     {
