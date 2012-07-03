@@ -26,7 +26,7 @@ namespace web.Call
             }
             catch(Exception e)
             {
-                return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed };
+                return new CallResponse(Url, Name) { Status = CallStatus.Failed };
             }
 
             try
@@ -39,7 +39,7 @@ namespace web.Call
                 bool validated = Validation.Execute(response);
                 if (!validated)
                 {
-                    return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed, Message = Validation.Message}; 
+                    return new CallResponse(Url, Name) { Status = CallStatus.Failed, Message = Validation.Message}; 
                 }
             }
             catch (Exception e)

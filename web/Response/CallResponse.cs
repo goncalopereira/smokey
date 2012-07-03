@@ -2,6 +2,13 @@ using Nancy.Json;
 
 namespace web.Response
 {
+    public enum CallStatus
+    {
+        OK,
+        Failed,
+        NotExecuted
+    };
+
     public class CallResponse
     {
         public CallResponse(string url, string name)
@@ -11,13 +18,7 @@ namespace web.Response
      
         }
 
-        public enum CallStatus
-        {
-            OK,
-            Failed,
-            NotExecuted
-        };
-
+      
         [ScriptIgnore]
         public CallStatus Status { get; set; }
         

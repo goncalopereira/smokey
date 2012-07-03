@@ -37,14 +37,14 @@ namespace web.Resource
                     var result = myCall.Execute();
                     results.Add(result);
 
-                    if (result.Status == CallResponse.CallStatus.Failed)
+                    if (result.Status == CallStatus.Failed)
                     {
                         stillRunning = false;
                     }
                 }
                 else
                 {
-                    results.Add(new CallResponse(myCall.Url, myCall.Name) { Status = CallResponse.CallStatus.NotExecuted });
+                    results.Add(new CallResponse(myCall.Url, myCall.Name) { Status = CallStatus.NotExecuted });
                 }
             }
 
