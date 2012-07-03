@@ -53,10 +53,10 @@ namespace alltests.unit
         [Test]
         public void When_executing_if_its_not_OK_there_is_error()
         {
-            const string errormessage = "HTTP Status Code Not OK";
+            const string errormessage = "errorMessage";
 
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
-            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse());
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { ErrorMessage = errormessage});
             Call call = new Call(client) { Url = "http://google.com" };
 
             var response = call.Execute();
