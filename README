@@ -17,11 +17,9 @@ http://smokey/smoke/
 Pick one of the resources...
 
 http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google
-{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","HTTPMethod":"GET"}],"Url":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google","ExecuteUrl":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google/Execute","Name":"Chained up GETs for Ping Google"}
+{"Calls":[{"Url":"http://google.com","Name":"Ping Google","Validation":{"Message":null},"HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","Validation":{"Message":"The remote name could not be resolved: \u0027google.coxm\u0027"},"HTTPMethod":"GET"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","Validation":{"Message":null},"HTTPMethod":"GET"}],"Name":"Chained up GETs for Ping Google","Url":"/smoke/Chained%20up%20GETs%20for%20Ping%20Google","ExecuteUrl":"/smoke/Chained%20up%20GETs%20for%20Ping%20Google/execute"}
 
 Execute the resource!
 
 http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google/Execute
-[{"Url":"http://google.com","Name":"Ping Google","State":"OK"},{"Url":"http://google.coxm","Name":"Failed Ping Google","State":"Failed"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","State":"NotExecuted"}]
-
-
+[{"Url":"http://google.com","Name":"Ping Google","State":"OK","Message":null},{"Url":"http://google.coxm","Name":"Failed Ping Google","State":"Failed","Message":"The remote name could not be resolved: \u0027google.coxm\u0027"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","State":"NotExecuted","Message":null}]

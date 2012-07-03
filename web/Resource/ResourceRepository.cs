@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using web.Call;
 
 namespace web.Resource
 {
@@ -17,7 +18,7 @@ namespace web.Resource
 
         public IResource Get(string id)
         {
-            return GetResources()[id];
+            return GetResources().Keys.Contains(id) ? GetResources()[id] : new Resource(new List<ICall>(), id);
         }
 
         private IDictionary<string, IResource> GetResources()
