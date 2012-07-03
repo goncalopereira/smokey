@@ -8,3 +8,12 @@ NancyFx for API
 RestSharp for calls
 NUnit and RhinoMocks for testing
 NuGet to put it together
+
+http://smokey/smoke/
+[{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"}],"Name":"Ping Google"}]
+
+http://smokey/smoke/Ping%20Google
+i{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"}],"Name":"Ping Google"}
+
+http://smokey/smoke/Ping%20Google/Execute
+[{"Url":"http://google.com","Name":"Ping Google","State":"OK"},{"Url":"http://google.coxm","Name":"Failed Ping Google","State":"Failed"}]
