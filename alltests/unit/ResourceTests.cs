@@ -30,6 +30,22 @@ namespace alltests.unit
                 call.AssertWasCalled(x=>x.Execute());
             }
         }
+
+        [Test]
+        public void When_getting_url_show_path()
+        {
+            const string name = "name";
+            Resource resource = new Resource(new List<ICall>(), name);
+            Assert.That(resource.Url, Is.EqualTo(string.Format("/smoke/{0}",name)));
+        }
+
+        [Test]
+        public void When_getting_execute_url_show_path()
+        {
+            const string name = "name";
+            Resource resource = new Resource(new List<ICall>(), name);
+            Assert.That(resource.ExecuteUrl, Is.EqualTo(string.Format("/smoke/{0}/execute",name)));
+        }
   
     }
 }

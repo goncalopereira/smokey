@@ -11,7 +11,7 @@ namespace web.Web
         public Smoke(IResourceRepository repository)
             : base("/smoke")
         {
-            Get["/{id}/Execute"] = parameters => ExecuteById(repository, parameters["id"]); 
+            Get["/{id}/execute"] = parameters => ExecuteById(repository, parameters["id"]); 
             Get["/{id}"] = parameters => ShowById(repository, parameters["id"]);
             Get["/"] = parameters => Show(repository);
         }

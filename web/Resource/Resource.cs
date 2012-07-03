@@ -8,15 +8,16 @@ namespace web.Resource
     {
        
         public List<ICall> Calls { get; private set; }
+        public string Name { get; private set; }
+
         public string Url { 
-            get { return HttpUtility.UrlPathEncode(string.Format(@"http://smokey/smoke/{0}", Name)); }
+            get { return HttpUtility.UrlPathEncode(string.Format("/smoke/{0}", Name)); }
         }
         public string ExecuteUrl
         {
-            get { return Url + "/Execute"; }
+            get { return string.Format("{0}/execute", Url); }
         }
 
-        public string Name { get; private set; }
         public Resource(List<ICall> calls, string name)
         {
             Calls = calls;
