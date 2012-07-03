@@ -51,8 +51,12 @@ namespace web.Call
 
         public string Url { get; set; }
         public string Name { get; set; }
-        public ICallResponseValidation Validation { get; set; }
         
+        [ScriptIgnore]
+        public ICallResponseValidation Validation { get; set; }
+
+        public string ValidationType { get { return Validation.GetType().ToString(); } }
+
         [ScriptIgnore]
         public Method Method { get; set; }
 
