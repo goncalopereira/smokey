@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Nancy.Helpers;
 using web.Call;
 
 namespace web.Resource
@@ -7,6 +8,13 @@ namespace web.Resource
     {
        
         public List<ICall> Calls { get; private set; }
+        public string Url { 
+            get { return HttpUtility.UrlPathEncode(string.Format(@"http://smokey/smoke/{0}", Name)); }
+        }
+        public string ExecuteUrl
+        {
+            get { return Url + "/Execute"; }
+        }
 
         public string Name { get; private set; }
         public Resource(List<ICall> calls, string name)

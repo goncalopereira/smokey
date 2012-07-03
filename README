@@ -9,11 +9,19 @@ RestSharp for calls
 NUnit and RhinoMocks for testing
 NuGet to put it together
 
+Smokey show me the resources!
+
 http://smokey/smoke/
-[{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"}],"Name":"Ping Google"}]
+[{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","HTTPMethod":"GET"}],"Url":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google","ExecuteUrl":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google/Execute","Name":"Chained up GETs for Ping Google"},{"Calls":[{"Url":"http://api.7digital.com/1.2/status?oauth_consumer_key=YOUR_KEY_HERE","Name":"Call status...","HTTPMethod":"GET"}],"Url":"http://smokey/smoke/Get%207d%20API%20current%20time","ExecuteUrl":"http://smokey/smoke/Get%207d%20API%20current%20time/Execute","Name":"Get 7d API current time"}]
 
-http://smokey/smoke/Ping%20Google
-i{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"}],"Name":"Ping Google"}
+Pick one of the resources...
 
-http://smokey/smoke/Ping%20Google/Execute
-[{"Url":"http://google.com","Name":"Ping Google","State":"OK"},{"Url":"http://google.coxm","Name":"Failed Ping Google","State":"Failed"}]
+http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google
+{"Calls":[{"Url":"http://google.com","Name":"Ping Google","HTTPMethod":"GET"},{"Url":"http://google.coxm","Name":"Failed Ping Google","HTTPMethod":"GET"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","HTTPMethod":"GET"}],"Url":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google","ExecuteUrl":"http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google/Execute","Name":"Chained up GETs for Ping Google"}
+
+Execute the resource!
+
+http://smokey/smoke/Chained%20up%20GETs%20for%20Ping%20Google/Execute
+[{"Url":"http://google.com","Name":"Ping Google","State":"OK"},{"Url":"http://google.coxm","Name":"Failed Ping Google","State":"Failed"},{"Url":"http://google.com","Name":"Valid but never called Ping Google","State":"NotExecuted"}]
+
+
