@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using Nancy.Json;
 using RestSharp;
 
@@ -15,7 +16,7 @@ namespace web.Call
 
         public Call()
         {
-            _client = new RestClient();
+           
         }
 
         public CallResponse Execute()
@@ -32,7 +33,15 @@ namespace web.Call
 
             try
             {
-                IRestResponse response = _client.Execute(new RestRequest(uri, Method));
+                var client = _client ?? new RestClient(string.Format("http://{0}", uri.Host));
+                var request = new RestRequest(uri.PathAndQuery, Method);
+
+                var response = client.Execute(request);
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed }; 
+                }
             }
             catch (Exception e)
             {

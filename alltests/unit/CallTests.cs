@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using NUnit.Framework;
 using RestSharp;
 using Rhino.Mocks;
@@ -23,10 +24,23 @@ namespace alltests.unit
         }
 
         [Test]
-        public void When_Executing_if_there_is_no_exception_then_return_OK()
+        public void When_Executing_if_there_is_no_exception_but_not_OK_then_fail()
         {
             IRestClient client = MockRepository.GenerateMock<IRestClient>();
             client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse());
+            Call call = new Call(client){Url = "http://google.com"};
+
+            var response = call.Execute();
+
+            Assert.That(response.Status, Is.EqualTo(CallResponse.CallStatus.Failed));
+            client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
+        }
+
+        [Test]
+        public void When_Executing_if_its_response_OK_then_return_OK()
+        {
+            IRestClient client = MockRepository.GenerateMock<IRestClient>();
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { StatusCode = HttpStatusCode.OK} );
             Call call = new Call(client){Url = "http://google.com"};
 
             var response = call.Execute();
@@ -35,4 +49,5 @@ namespace alltests.unit
             client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
         }
     }
-}
+   }
+
