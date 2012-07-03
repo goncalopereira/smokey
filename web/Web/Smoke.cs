@@ -11,12 +11,12 @@ namespace web.Web
         public Smoke(IResourceRepository repository)
             : base("/smoke")
         {
-            Get["/{id}/execute"] = parameters => ExecuteById(repository, parameters["id"]); 
-            Get["/{id}"] = parameters => ShowById(repository, parameters["id"]);
+            Get["/{id}/execute"] = parameters => Execute(repository, parameters["id"]);
+            Get["/{id}"] = parameters => Show(repository, parameters["id"]);
             Get["/"] = parameters => Show(repository);
         }
 
-        private JsonResponse<IResource> ShowById(IResourceRepository repository, string id)
+        private JsonResponse<IResource> Show(IResourceRepository repository, string id)
         {
             IResource resource = repository.Get(id);
             return new JsonResponse<IResource>(resource,new DefaultJsonSerializer());
@@ -28,7 +28,7 @@ namespace web.Web
             return new JsonResponse<IList<IResource>>(resources, new DefaultJsonSerializer());
         }
 
-        private static JsonResponse<IList<CallResponse>> ExecuteById(IResourceRepository repository, string id)
+        private static JsonResponse<IList<CallResponse>> Execute(IResourceRepository repository, string id)
         {
             IResource resource = repository.Get(id);
             IList<CallResponse> callResponses = resource.Execute();
