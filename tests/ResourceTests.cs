@@ -5,7 +5,7 @@ using web.Call;
 using web.CallResponse;
 using web.Resource;
 
-namespace alltests.unit
+namespace tests
 {
     [TestFixture]
     public class ResourceTests

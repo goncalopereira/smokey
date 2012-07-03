@@ -2,11 +2,10 @@
 using NUnit.Framework;
 using Nancy.Testing;
 using Rhino.Mocks;
-using web.Call;
 using web.CallResponse;
 using web.Resource;
 
-namespace alltests.unit
+namespace tests
 {
     [TestFixture]
     public class SmokeTests

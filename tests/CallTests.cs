@@ -6,7 +6,7 @@ using Rhino.Mocks;
 using web.Call;
 using web.CallResponse;
 
-namespace alltests.unit
+namespace tests
 {
     [TestFixture]
     public class CallTests

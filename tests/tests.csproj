@@ -8,7 +8,7 @@
     <ProjectGuid>{8E04568E-ECC4-42C8-9CD1-2540C4536DB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>alltests</RootNamespace>
+    <RootNamespace>tests</RootNamespace>
     <AssemblyName>alltests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -69,10 +69,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="unit\CallTests.cs" />
-    <Compile Include="unit\ResourceTests.cs" />
-    <Compile Include="unit\SmokeTests.cs" />
+    <Compile Include="ResourceTests.cs" />
+    <Compile Include="SmokeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\web\web.csproj">
