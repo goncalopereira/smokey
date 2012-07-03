@@ -1,34 +1,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using web.Call;
+using web.Configuration;
 
 namespace web.Resource
 {
     public class ResourceRepository : IResourceRepository
     {
-        private IDictionary<string, IResource> _resources;
+        private readonly IDictionary<string, IResource> _resources;
 
-        public ResourceRepository(IDictionary<string,IResource> resources)
+        public ResourceRepository(IResourceConfig resourceConfig)
         {
-            _resources = resources;
+            _resources = resourceConfig.Get();
         }
-
-        public ResourceRepository() {}
-
 
         public IResource Get(string id)
         {
-            return GetResources().Keys.Contains(id) ? GetResources()[id] : new Resource(new List<ICall>(), id);
-        }
-
-        private IDictionary<string, IResource> GetResources()
-        {
-            return _resources ?? (_resources = ResourceConfig.Get());
+            return _resources.Keys.Contains(id) ? _resources[id] : new Resource(new List<ICall>(), id);
         }
 
         public IList<IResource> GetAll()
         {
-            return GetResources().Values.ToList();
+            return _resources.Values.ToList();
         }
     }
 }

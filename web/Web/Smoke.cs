@@ -2,6 +2,7 @@
 using Nancy;
 using Nancy.Responses;
 using web.Resource;
+using web.Response;
 
 namespace web.Web
 {
@@ -27,11 +28,11 @@ namespace web.Web
             return new JsonResponse<IList<IResource>>(resources, new DefaultJsonSerializer());
         }
 
-        private static JsonResponse<IList<CallResponse.CallResponse>> ExecuteById(IResourceRepository repository, string id)
+        private static JsonResponse<IList<CallResponse>> ExecuteById(IResourceRepository repository, string id)
         {
             IResource resource = repository.Get(id);
-            IList<CallResponse.CallResponse> callResponses = resource.Execute();
-            return new JsonResponse<IList<CallResponse.CallResponse>>(callResponses, new DefaultJsonSerializer());
+            IList<CallResponse> callResponses = resource.Execute();
+            return new JsonResponse<IList<CallResponse>>(callResponses, new DefaultJsonSerializer());
         }
     }
 }

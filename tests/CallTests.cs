@@ -4,7 +4,8 @@ using NUnit.Framework;
 using RestSharp;
 using Rhino.Mocks;
 using web.Call;
-using web.CallResponse;
+using web.Response;
+using web.Validation;
 
 namespace tests
 {

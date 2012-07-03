@@ -1,10 +1,11 @@
 using RestSharp;
+using web.Response;
 
 namespace web.Call
 {
     public interface ICall
     {
-        CallResponse.CallResponse Execute();
+        CallResponse Execute();
         string Url { get; }
         string Name { get; }
         Method Method { get; }

@@ -1,7 +1,7 @@
 using System.Net;
 using RestSharp;
 
-namespace web.CallResponse
+namespace web.Validation
 {
     public class HttpStatusCodeIsOK : ICallResponseValidation
     {

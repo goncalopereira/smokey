@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using RestSharp;
 using web.Call;
-using web.CallResponse;
+using web.Resource;
+using web.Validation;
 
-namespace web.Resource
+namespace web.Configuration
 {
-    internal static class ResourceConfig
+    internal class DemoResourceConfig : IResourceConfig
     {
-        public static IDictionary<string, IResource> Get()
+        public IDictionary<string, IResource> Get()
         {
-            var tryToPingGoogle = new Resource(new List<ICall>()
+            var tryToPingGoogle = new Resource.Resource(new List<ICall>()
                                                    {
                                                        new Call.Call()
                                                            {
@@ -34,7 +35,7 @@ namespace web.Resource
                                                            }
                                                    }, "Chained up GETs for Ping Google");
 
-            var tryToPing7D = new Resource(new List<ICall>()
+            var tryToPing7D = new Resource.Resource(new List<ICall>()
                                                {
                                                    new Call.Call()
                                                        {

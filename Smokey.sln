@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{8E04568E-ECC4-42C8-9CD1-2540C4536DB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests.csproj", "{8E04568E-ECC4-42C8-9CD1-2540C4536DB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{80009B6B-DC67-4A26-A6F2-A2E740A3C6EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "web\Web.csproj", "{80009B6B-DC67-4A26-A6F2-A2E740A3C6EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6595C8B5-FABF-4D29-B852-FAA9F9CC79AE}"
 	ProjectSection(SolutionItems) = preProject

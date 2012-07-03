@@ -1,7 +1,8 @@
 using System;
 using Nancy.Json;
 using RestSharp;
-using web.CallResponse;
+using web.Response;
+using web.Validation;
 
 namespace web.Call
 {
@@ -16,7 +17,7 @@ namespace web.Call
 
         public Call() {}
 
-        public CallResponse.CallResponse Execute()
+        public CallResponse Execute()
         {
             Uri uri;
             try
@@ -25,7 +26,7 @@ namespace web.Call
             }
             catch(Exception e)
             {
-                return new CallResponse.CallResponse(Url, Name) { Status = CallResponse.CallResponse.CallStatus.Failed };
+                return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed };
             }
 
             try
@@ -38,15 +39,15 @@ namespace web.Call
                 bool validated = Validation.Execute(response);
                 if (!validated)
                 {
-                    return new CallResponse.CallResponse(Url, Name) { Status = CallResponse.CallResponse.CallStatus.Failed, Message = Validation.Message}; 
+                    return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed, Message = Validation.Message}; 
                 }
             }
             catch (Exception e)
             {
-                return new CallResponse.CallResponse(Url, Name) {Status = CallResponse.CallResponse.CallStatus.Failed, Message = e.Message};
+                return new CallResponse(Url, Name) {Status = CallResponse.CallStatus.Failed, Message = e.Message};
             }
 
-            return new CallResponse.CallResponse(Url, Name);
+            return new CallResponse(Url, Name);
         }
 
         public string Url { get; set; }
