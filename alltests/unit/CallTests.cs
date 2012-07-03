@@ -48,6 +48,47 @@ namespace alltests.unit
             Assert.That(response.Status, Is.EqualTo(CallResponse.CallStatus.OK));
             client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
         }
+
+
+        [Test]
+        public void When_executing_if_its_not_OK_there_is_error()
+        {
+            const string errormessage = "HTTP Status Code Not OK";
+
+            IRestClient client = MockRepository.GenerateMock<IRestClient>();
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse());
+            Call call = new Call(client) { Url = "http://google.com" };
+
+            var response = call.Execute();
+
+            Assert.That(response.Message, Is.EqualTo(errormessage));
+        }
+
+        [Test]
+        public void When_executing_if_its_OK_there_is_no_error()
+        {
+            IRestClient client = MockRepository.GenerateMock<IRestClient>();
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Return(new RestResponse() { StatusCode = HttpStatusCode.OK });
+            Call call = new Call(client) { Url = "http://google.com" };
+
+           var response = call.Execute();
+
+            Assert.That(response.Message, Is.Null);
+        }
+
+        [Test]
+        public void When_Executing_if_there_is_an_exception_then_return_exception_message()
+        {
+            const string errorMessage = "error message";
+
+            IRestClient client = MockRepository.GenerateMock<IRestClient>();
+            client.Stub(x => x.Execute(Arg<IRestRequest>.Is.Anything)).Throw(new Exception(errorMessage));
+            Call call = new Call(client) { Url = "http://google.com" };
+
+            var response = call.Execute();
+
+            Assert.That(response.Message,Is.EqualTo(errorMessage));
+        }
     }
    }
 

@@ -7,6 +7,14 @@ namespace web.Resource
     {
         private IDictionary<string, IResource> _resources;
 
+        public ResourceRepository(IDictionary<string,IResource> resources)
+        {
+            _resources = resources;
+        }
+
+        public ResourceRepository() {}
+
+
         public IResource Get(string id)
         {
             return GetResources()[id];

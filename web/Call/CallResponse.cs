@@ -8,6 +8,7 @@ namespace web.Call
         {
             Name = name;
             Url = url;
+     
         }
 
         public enum CallStatus
@@ -27,5 +28,7 @@ namespace web.Call
             get { return Status.ToString(); }
           
         }
+
+        public string Message { get; set; }
     }
 }

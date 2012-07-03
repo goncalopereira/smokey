@@ -40,12 +40,12 @@ namespace web.Call
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed }; 
+                    return new CallResponse(Url, Name) { Status = CallResponse.CallStatus.Failed, Message = "HTTP Status Code Not OK"}; 
                 }
             }
             catch (Exception e)
             {
-                return new CallResponse(Url, Name) {Status = CallResponse.CallStatus.Failed};
+                return new CallResponse(Url, Name) {Status = CallResponse.CallStatus.Failed, Message = e.Message};
             }
 
             return new CallResponse(Url, Name);
