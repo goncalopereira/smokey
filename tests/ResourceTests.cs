@@ -16,10 +16,10 @@ namespace tests
             List<ICall> calls = new List<ICall>();
             var call1 = MockRepository.GenerateMock<ICall>();
             call1.Stub(x => x.Execute()).Return(new CallResponse(string.Empty, string.Empty)
-                                                    {Status = CallResponse.CallStatus.OK});
+                                                    {Status = CallStatus.OK});
             var call2 = MockRepository.GenerateMock<ICall>();
             call2.Stub(x => x.Execute()).Return(new CallResponse(string.Empty, string.Empty)
-                                                    {Status = CallResponse.CallStatus.OK});
+                                                    {Status = CallStatus.OK});
             calls.Add(call1);
             calls.Add(call2);
 

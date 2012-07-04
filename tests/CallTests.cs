@@ -21,7 +21,7 @@ namespace tests
 
             var response = call.Execute();
 
-            Assert.That(response.Status, Is.EqualTo(CallResponse.CallStatus.Failed));
+            Assert.That(response.Status, Is.EqualTo(CallStatus.Failed));
             client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
         }
 
@@ -36,7 +36,7 @@ namespace tests
 
             var response = call.Execute();
 
-            Assert.That(response.Status, Is.EqualTo(CallResponse.CallStatus.Failed));
+            Assert.That(response.Status, Is.EqualTo(CallStatus.Failed));
             client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
         }
 
@@ -51,7 +51,7 @@ namespace tests
 
             var response = call.Execute();
 
-            Assert.That(response.Status, Is.EqualTo(CallResponse.CallStatus.OK));
+            Assert.That(response.Status, Is.EqualTo(CallStatus.OK));
             client.AssertWasCalled(x => x.Execute(Arg<IRestRequest>.Is.Anything));
         }
 

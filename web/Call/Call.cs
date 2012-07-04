@@ -44,7 +44,7 @@ namespace web.Call
             }
             catch (Exception e)
             {
-                return new CallResponse(Url, Name) {Status = CallResponse.CallStatus.Failed, Message = e.Message};
+                return new CallResponse(Url, Name) {Status = CallStatus.Failed, Message = e.Message};
             }
 
             return new CallResponse(Url, Name);
