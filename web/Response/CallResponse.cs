@@ -1,6 +1,6 @@
 using Nancy.Json;
 
-namespace web.Response
+namespace API.Response
 {
     public enum CallStatus
     {

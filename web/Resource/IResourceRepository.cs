@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace web.Resource
+namespace API.Resource
 {
     public interface IResourceRepository
     {

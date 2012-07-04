@@ -1,7 +1,7 @@
+using API.Response;
 using RestSharp;
-using web.Response;
 
-namespace web.Call
+namespace API.Call
 {
     public interface ICall
     {

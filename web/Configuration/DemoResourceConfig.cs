@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using API.Call;
+using API.Resource;
+using API.Validation;
 using RestSharp;
-using web.Call;
-using web.Resource;
-using web.Validation;
 
-namespace web.Configuration
+namespace API.Configuration
 {
     internal class DemoResourceConfig : IResourceConfig
     {

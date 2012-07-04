@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using web.Call;
-using web.Configuration;
+using API.Call;
+using API.Configuration;
 
-namespace web.Resource
+namespace API.Resource
 {
     public class ResourceRepository : IResourceRepository
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using web.Resource;
+using API.Resource;
 
-namespace web.Configuration
+namespace API.Configuration
 {
     public interface IResourceConfig
     {

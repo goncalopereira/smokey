@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using web.Response;
+using API.Response;
 
-namespace web.Resource
+namespace API.Resource
 {
     public interface IResource
     {

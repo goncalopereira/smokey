@@ -3,9 +3,9 @@ using System.Net;
 using NUnit.Framework;
 using RestSharp;
 using Rhino.Mocks;
-using web.Call;
-using web.Response;
-using web.Validation;
+using API.Call;
+using API.Response;
+using API.Validation;
 
 namespace tests
 {

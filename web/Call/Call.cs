@@ -1,10 +1,10 @@
 using System;
+using API.Response;
+using API.Validation;
 using Nancy.Json;
 using RestSharp;
-using web.Response;
-using web.Validation;
 
-namespace web.Call
+namespace API.Call
 {
     public class Call : ICall
     {

@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using Nancy.Testing;
 using Rhino.Mocks;
-using web.Resource;
-using web.Response;
+using API.Resource;
+using API.Response;
 
 namespace tests
 {

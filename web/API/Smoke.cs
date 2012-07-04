@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using API.Resource;
+using API.Response;
 using Nancy;
 using Nancy.Responses;
-using web.Resource;
-using web.Response;
 
-namespace web.Web
+namespace API.API
 {
     public class Smoke : NancyModule
     {

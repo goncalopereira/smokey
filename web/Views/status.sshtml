@@ -1,0 +1,13 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+@Each.@Model
+test
+@EndEach
+</body>
+</html>
+
+

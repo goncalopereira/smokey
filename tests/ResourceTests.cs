@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Rhino.Mocks;
-using web.Call;
-using web.Resource;
-using web.Response;
+using API.Call;
+using API.Resource;
+using API.Response;
 
 namespace tests
 {

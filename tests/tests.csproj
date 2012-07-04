@@ -75,9 +75,9 @@
     <Compile Include="SmokeTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\web\Web.csproj">
+    <ProjectReference Include="..\web\API.csproj">
       <Project>{80009B6B-DC67-4A26-A6F2-A2E740A3C6EF}</Project>
-      <Name>Web</Name>
+      <Name>API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

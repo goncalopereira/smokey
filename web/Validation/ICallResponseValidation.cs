@@ -1,6 +1,6 @@
 using RestSharp;
 
-namespace web.Validation
+namespace API.Validation
 {
     public interface ICallResponseValidation
     {

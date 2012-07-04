@@ -1,14 +1,13 @@
 using System.Collections.Generic;
+using API.Call;
+using API.Response;
 using Nancy.Helpers;
-using web.Call;
-using web.Response;
 
-namespace web.Resource
+namespace API.Resource
 {
     public class Resource : IResource
     {
-       
-        public List<ICall> Calls { get; private set; }
+        private List<ICall> Calls { get; set; }
         public string Name { get; private set; }
 
         public string Url { 
